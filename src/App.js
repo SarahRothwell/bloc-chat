@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import * as firebase from 'firebase';
+import RoomList from './components/RoomList.js';
 
 var config = {
     apiKey: "AIzaSyD4oMBI2mzH-vSZKo6hLf4wcRrhTBu9brE",
@@ -15,23 +15,21 @@ var config = {
 
 
 class App extends Component {
+  constructor() {
+    super()
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>Bloc Chat</h1>
         </header>
+        <main>
+          <div>
+          <RoomList firebase={firebase}/>
+          </div>
+        </main>
       </div>
     );
   }
