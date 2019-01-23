@@ -20,7 +20,7 @@ handleChange(e){
 /*form submission logic to create new room in firebase*/
 createRoom(e){
   e.preventDefault();
-  let newRoomName = e.target.value;
+  let newRoomName = this.state.name;
   console.log(newRoomName);
   this.roomsRef.push({
     name: newRoomName
