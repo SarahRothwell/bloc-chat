@@ -27,12 +27,6 @@ createRoom(e){
   });
 }
 
-/*Cancel form logic*/
-handleCancelForm(){
-
-}
-
-
 componentDidMount(){
   this.roomsRef.on('child_added', snapshot => {
     const room = snapshot.val();
@@ -41,13 +35,13 @@ componentDidMount(){
   });
 }
 
-
   render () {
     return (
       <section className = "room-list-wrapper">
         <ul className="chat-rooms">
           {this.state.rooms.map((room, index) =>
-            <li className = "room-names" key={index}>{room.name}</li>)}
+            <li className = "room-names" key={index}
+              onClick = {() => this.props.handleActiveRoomChange(room)}>{room.name}</li>)}
         </ul>
         <form className = "create-new-room" onSubmit={this.createRoom}>
           <label>Enter name of new room:</label><br/>

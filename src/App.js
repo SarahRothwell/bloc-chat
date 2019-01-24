@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList.js';
+import MessageList from './components/MessageList.js';
 
 var config = {
     apiKey: "AIzaSyD4oMBI2mzH-vSZKo6hLf4wcRrhTBu9brE",
@@ -15,9 +16,21 @@ var config = {
 
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeRoom: ""
+    };
+
+    this.handleActiveRoomChange = this.handleActiveRoomChange.bind(this);
   }
+
+/*Sets new active room state based on what user clicked on*/
+handleActiveRoomChange(e){
+  this.setState({activeRoom: e});
+  console.log(e);
+}
 
   render() {
     return (
@@ -27,7 +40,18 @@ class App extends Component {
         </header>
         <main>
           <div>
-          <RoomList firebase={firebase}/>
+          <RoomList
+            firebase={firebase}
+            activeRoom = { this.state.activeRoom }
+            handleActiveRoomChange = {(e) => this.handleActiveRoomChange(e)}
+          />
+      </div>
+          <div className="Message-List">
+            {this.state.activeRoom ? this.state.activeRoom.name : 'Pick a room!'}
+            <MessageList
+              firebase = {firebase}
+              activeRoom = {this.state.activeRoom}
+            />
           </div>
         </main>
       </div>
