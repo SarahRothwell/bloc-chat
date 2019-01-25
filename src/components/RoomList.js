@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './RoomList.css'
 
 class RoomList extends Component {
   constructor (props) {
@@ -38,6 +39,7 @@ componentDidMount(){
   render () {
     return (
       <section className = "room-list-wrapper">
+        <h2>Select a Room:</h2>
         <ul className="chat-rooms">
           {this.state.rooms.map((room, index) =>
             <li className = "room-names" key={index}

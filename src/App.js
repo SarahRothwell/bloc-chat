@@ -39,20 +39,23 @@ handleActiveRoomChange(e){
           <h1>Bloc Chat</h1>
         </header>
         <main>
-          <div>
-          <RoomList
-            firebase={firebase}
-            activeRoom = { this.state.activeRoom }
-            handleActiveRoomChange = {(e) => this.handleActiveRoomChange(e)}
-          />
-      </div>
-          <div className="Message-List">
-            {this.state.activeRoom ? this.state.activeRoom.name : 'Pick a room!'}
-            <MessageList
-              firebase = {firebase}
-              activeRoom = {this.state.activeRoom}
+          <section className ="chat-wrapper">
+            <div className="Room-List">
+            <RoomList
+              firebase={firebase}
+              activeRoom = { this.state.activeRoom }
+              /*Passes function as prop to RoomList component*/
+              handleActiveRoomChange = {(e) => this.handleActiveRoomChange(e)}
             />
-          </div>
+            </div>
+            <div className="Message-List">
+              <h2>{this.state.activeRoom ? this.state.activeRoom.name : 'Pick a room!'}</h2>
+              <MessageList
+                firebase = {firebase}
+                activeRoom = {this.state.activeRoom}
+              />
+            </div>
+          </section>
         </main>
       </div>
     );
