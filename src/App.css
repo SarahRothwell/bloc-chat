@@ -33,7 +33,9 @@
   height: 500px;
 }
 
-
+.left-wrapper {
+  background-color: #DFE2E4;
+}
 
 .App-link {
   color: #61dafb;

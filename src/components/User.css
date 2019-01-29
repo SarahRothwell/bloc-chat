@@ -1,0 +1,14 @@
+.user-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.user-label {
+  margin: 10px;
+  font-weight: bold;
+
+}
+
+.signIn-signOut-button {
+  margin: 10px;
+}

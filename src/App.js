@@ -3,6 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList.js';
 import MessageList from './components/MessageList.js';
+import User from './components/User.js';
 
 var config = {
     apiKey: "AIzaSyD4oMBI2mzH-vSZKo6hLf4wcRrhTBu9brE",
@@ -20,16 +21,23 @@ class App extends Component {
     super(props);
 
     this.state = {
-      activeRoom: ""
+      activeRoom: "",
+      user: ""
     };
 
     this.handleActiveRoomChange = this.handleActiveRoomChange.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
 /*Sets new active room state based on what user clicked on*/
 handleActiveRoomChange(e){
   this.setState({activeRoom: e});
   console.log(e);
+}
+
+setUser(user){
+  this.setState({user: user});
+  console.log(user);
 }
 
   render() {
@@ -40,13 +48,22 @@ handleActiveRoomChange(e){
         </header>
         <main>
           <section className ="chat-wrapper">
-            <div className="Room-List">
-            <RoomList
-              firebase={firebase}
-              activeRoom = { this.state.activeRoom }
-              /*Passes function as prop to RoomList component*/
-              handleActiveRoomChange = {(e) => this.handleActiveRoomChange(e)}
-            />
+            <div className = "left-wrapper">
+              <div className="User-Name">
+                <User
+                  firebase = {firebase}
+                  user = {this.state.user}
+                  setUser = {(user) => this.setUser(user)}
+                />
+              </div>
+              <div className="Room-List">
+              <RoomList
+                firebase={firebase}
+                activeRoom = { this.state.activeRoom }
+                /*Passes function as prop to RoomList component*/
+                handleActiveRoomChange = {(e) => this.handleActiveRoomChange(e)}
+              />
+              </div>
             </div>
             <div className="Message-List">
               <h2>{this.state.activeRoom ? this.state.activeRoom.name : 'Pick a room!'}</h2>
@@ -55,6 +72,7 @@ handleActiveRoomChange(e){
                 activeRoom = {this.state.activeRoom}
               />
             </div>
+
           </section>
         </main>
       </div>
