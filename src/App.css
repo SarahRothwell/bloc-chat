@@ -20,7 +20,8 @@
 
 .chat-wrapper {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 50px 2fr 50px;
+  background-color: #F7F7F8;
 }
 
 .Room-List {
@@ -29,7 +30,7 @@
 }
 
 .Message-List {
-  background-color: #F7F7F8;
+  grid-column: 3;
   height: 500px;
 }
 
@@ -37,7 +38,9 @@
   background-color: #DFE2E4;
 }
 
+
 .App-link {
+  box-sizing: border-box;
   color: #61dafb;
 }
 

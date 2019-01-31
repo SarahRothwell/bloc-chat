@@ -66,11 +66,21 @@ setUser(user){
               </div>
             </div>
             <div className="Message-List">
-              <h2>{this.state.activeRoom ? this.state.activeRoom.name : 'Pick a room!'}</h2>
-              <MessageList
-                firebase = {firebase}
-                activeRoom = {this.state.activeRoom}
-              />
+              {this.state.activeRoom ? (
+                <div>
+                  <div>{this.state.activeRoom.name}</div>
+                    <div><MessageList
+                      firebase = {firebase}
+                      activeRoom = {this.state.activeRoom}
+                      user = {this.state.user}
+                      />
+                    </div>
+                  </div>) : (
+                <div>
+                  <div>'Pick a room!'</div>
+                  <div></div>
+                </div>
+                )}
             </div>
 
           </section>
